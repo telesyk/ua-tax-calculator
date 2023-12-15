@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <div className="z-10 p-12 max-w-5xl w-full items-center justify-between bg-gradient-radial font-mono text-sm lg:flex">
-      <div className="flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+    <footer className="p-12 max-w-5xl w-full bg-gradient-conic from-sky-600/30 to-yellow-500/20 font-mono text-sm">
+      <div className="flex flex-col w-full items-center justify-center">
         <a
           className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -20,7 +20,8 @@ export default function Footer() {
             priority
           />
         </a>
+        <p className="py-4">Made with 💙💛</p>
       </div>
-    </div>
+    </footer>
   )
 }

@@ -14,11 +14,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='dark'>
-      <body className='min-h-screen flex flex-col items-center justify-between'>
+    <html lang="en" className="dark">
+      <body>
         <Providers>
-          {children}
-          <Footer />
+          <div className="min-h-screen flex flex-col items-center justify-between">
+            <main className="max-w-5xl w-full grow p-12 lg:p-24">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>
