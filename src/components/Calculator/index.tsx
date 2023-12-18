@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-// import { MdCurrencyExchange } from 'react-icons/md'
-import { Button, Input, Radio, RadioGroup } from '@nextui-org/react'
+import { Input, Radio, RadioGroup } from '@nextui-org/react'
 
 const VALUE = {
   minsalary: 7100,
@@ -33,7 +32,7 @@ const captions = {
     description: '',
   },
   tax2pay: {
-    title: 'Tax to pay',
+    title: 'Total tax to pay',
     description: '',
   },
   profit: {
@@ -52,13 +51,16 @@ export default function Calculator() {
 
   useEffect(() => {
     handleProfit()
-  }, [state.capital])
+  }, [state.capital, state.tax2pay])
 
-  const handleTaxChange = () =>
+  const handleTaxChange = () => {
+    // console.log('onChange radio')
     setState(prev => ({
       ...prev,
       epTax: prev.epTax === 5 ? 3 : 5,
     }))
+    handleTax2Pay()
+  }
 
   const handleProfit = () => {
     setState(prev => ({
@@ -67,15 +69,22 @@ export default function Calculator() {
     }))
   }
 
-  const handleCapitalChange = (event: any) => {
+  const handleTax2Pay = () => {
     const esvValue = (VALUE.taxesv * VALUE.minsalary) / 100
     const epValue = (state.epTax / 100) * Number(state.capital)
 
     setState(prev => ({
       ...prev,
-      capital: event.target.value,
       tax2pay: esvValue + epValue,
     }))
+  }
+
+  const handleCapitalChange = (event: any) => {
+    setState(prev => ({
+      ...prev,
+      capital: event.target.value,
+    }))
+    handleTax2Pay()
   }
 
   return (

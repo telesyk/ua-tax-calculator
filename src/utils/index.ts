@@ -11,6 +11,7 @@ export const filteredData = (data: object | any) => {
   })
   return newArr
 }
+
 export const getCurrencies = async (api_url: string) => {
   try {
     const response = await fetch(api_url)
