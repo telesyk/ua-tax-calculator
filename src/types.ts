@@ -17,3 +17,12 @@ export interface CurrencyProps {
 export type CurrenciesListProps = {
   data: CurrencyProps[] | []
 }
+
+export interface CalculatorStateProps {
+  epTax: number
+  capital: number
+  profit: number
+  taxTotal: number
+  taxESVValue: number
+  taxEPValue: number
+}
