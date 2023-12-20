@@ -3,7 +3,7 @@ import { CurrenciesListProps } from '@/types'
 export default function CurrencyRate({ data }: CurrenciesListProps[] | any) {
   return (
     <>
-      <div className="text-default-400 mb-3">NBU currency rates</div>
+      <div className="text-default-500 mb-3">NBU currency rates</div>
       <ul className="text-xs sm:text-sm">
         {data.map((item: any) => (
           <li key={item.cc} className="flex gap-2 my-2">

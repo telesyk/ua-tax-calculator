@@ -1,4 +1,4 @@
-import { DATA_TYPES } from '@/constants'
+import { DATA_TYPES, INITIAL_VALUE } from '@/constants'
 
 export const filteredData = (data: object | any) => {
   const newArr: object[] = []
@@ -20,4 +20,17 @@ export const getCurrencies = async (api_url: string) => {
   } catch (error) {
     console.error(error)
   }
+}
+
+export const getTaxYears = (obj: Object) => Object.keys(obj)
+
+export const getEsvValue = (year: string | number) => {
+  return Number(
+    (
+      (INITIAL_VALUE.taxesv *
+        INITIAL_VALUE.minsalary[year as keyof typeof INITIAL_VALUE.minsalary]
+          .q1) /
+      100
+    ).toFixed(2)
+  )
 }

@@ -25,4 +25,6 @@ export interface CalculatorStateProps {
   taxTotal: number
   taxESVValue: number
   taxEPValue: number
+  taxYear: string
+  minsalary: number
 }

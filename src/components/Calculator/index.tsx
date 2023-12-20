@@ -1,29 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { CalculatorStateProps } from '@/types'
-import { MOCK_DATA } from '@/constants'
-import CurrencyRate from '../Currency/Rate'
+import { MOCK_DATA, CURRENT_YEAR, INITIAL_VALUE } from '@/constants'
+import { getEsvValue } from '@/utils'
 import CalculatorContext from './context'
+import CurrencyRate from '../Currency/Rate'
 import Inputs from './Inputs'
 import Outputs from './Outputs'
 import TaxCategories from './TaxCategories'
+import TaxYears from './TaxYears'
 
-const INITIAL_VALUE = {
-  minsalary: {
-    '2023': {
-      q1: 6800,
-    },
-    '2024': {
-      q1: 7100,
-      q2: 8000,
-    },
-  },
-  taxep: 5,
-  taxesv: 22,
-  esvValue: function (): number {
-    return Number(((this.taxesv * this.minsalary['2023'].q1) / 100).toFixed(2))
-  },
-}
 const captions = {
   taxOptions: {
     option1: '5 %',
@@ -63,16 +49,29 @@ export default function Calculator() {
     capital: 0.0,
     profit: 0.0,
     taxTotal: 0.0,
-    taxESVValue: INITIAL_VALUE.esvValue(),
+    taxESVValue: getEsvValue(CURRENT_YEAR),
     taxEPValue: 0.0,
+    taxYear: CURRENT_YEAR,
+    minsalary:
+      INITIAL_VALUE.minsalary[
+        CURRENT_YEAR as keyof typeof INITIAL_VALUE.minsalary
+      ].q1,
   })
+
+  useEffect(() => {
+    setState(prev => ({
+      ...prev,
+      capital: prev.minsalary,
+    }))
+  }, [])
 
   useEffect(() => {
     handleProfit()
   }, [state.capital, state.taxTotal])
+
   useEffect(() => {
     handleTaxTotal()
-  }, [state.capital, state.epTax])
+  }, [state.capital, state.epTax, state.taxESVValue])
 
   const handleProfit = () => {
     setState(prev => ({
@@ -108,18 +107,32 @@ export default function Calculator() {
     }))
   }
 
+  const handleTaxYearChange = (value: string) => {
+    setState(prev => ({
+      ...prev,
+      taxESVValue: getEsvValue(value),
+      taxYear: value,
+      minsalary:
+        INITIAL_VALUE.minsalary[value as keyof typeof INITIAL_VALUE.minsalary]
+          .q1,
+    }))
+  }
+
   const contextValue = {
     state,
     captions,
     INITIAL_VALUE,
     handleCapitalChange,
     handleTaxChange,
+    handleTaxYearChange,
   }
 
   return (
     <CalculatorContext.Provider value={contextValue}>
-      <div className="my-4 p-4 border rounded"></div>
-      <div className="my-6 flex justify-center gap-8">
+      <div className="my-4">
+        <TaxYears />
+      </div>
+      <div className="my-6 flex justify-center gap-8 xl:gap-12">
         <div className="py-2 grow md:basis-1/2">
           <TaxCategories />
         </div>
@@ -127,7 +140,7 @@ export default function Calculator() {
           <CurrencyRate data={MOCK_DATA} />
         </div>
       </div>
-      <div className="flex flex-wrap sm:flex-nowrap justify-center items-end gap-8">
+      <div className="flex flex-wrap sm:flex-nowrap justify-center items-end gap-8 xl:gap-12">
         <div className="py-2 grow basis-full sm:basis-1/2">
           <Inputs />
         </div>

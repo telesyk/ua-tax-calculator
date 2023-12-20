@@ -13,11 +13,24 @@ export const DATA_TYPES: SelectedCurrencyProps[] = [
     sign: '€',
     flag: '🇪🇺',
   },
-  {
-    name: 'PLN',
-    flag: '🇵🇱',
-  },
 ]
+
+export const CURRENT_DATE = new Date()
+export const CURRENT_YEAR = String(CURRENT_DATE.getFullYear())
+
+export const INITIAL_VALUE = {
+  minsalary: {
+    '2023': {
+      q1: 6700,
+    },
+    '2024': {
+      q1: 7100,
+      q2: 8000,
+    },
+  },
+  taxep: 5,
+  taxesv: 22,
+}
 
 export const MOCK_DATA = [
   {
@@ -25,6 +38,7 @@ export const MOCK_DATA = [
     txt: 'Долар США',
     rate: 37.0211,
     cc: 'USD',
+    sign: '$',
     exchangedate: '18.12.2023',
     flag: '🇺🇸',
   },
@@ -33,15 +47,8 @@ export const MOCK_DATA = [
     txt: 'Євро',
     rate: 40.5122,
     cc: 'EUR',
+    sign: '€',
     exchangedate: '18.12.2023',
     flag: '🇪🇺',
-  },
-  {
-    r030: 985,
-    txt: 'Злотий',
-    rate: 9.3936,
-    cc: 'PLN',
-    exchangedate: '18.12.2023',
-    flag: '🇵🇱',
   },
 ]
