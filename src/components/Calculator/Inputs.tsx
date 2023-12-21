@@ -3,7 +3,7 @@ import { Input } from '@nextui-org/react'
 import CalculatorContext from './context'
 
 export default function Inputs() {
-  const { state, captions, INITIAL_VALUE, handleCapitalChange } =
+  const { state, currency, captions, INITIAL_VALUE, handleCapitalChange } =
     useContext(CalculatorContext)
 
   return (
@@ -26,7 +26,14 @@ export default function Inputs() {
             </div>
           }
         />
-        <div className="text-default-600 text-sm">{state.taxESVValue} ₴</div>
+        <div className="text-default-600 text-sm inline-flex flex-col gap-2 text-right">
+          <span>{state.taxESVValue} ₴</span>
+          {currency.name !== '' && (
+            <span className="text-default-400 text-xs">
+              {currency.taxEsv} {currency.sign}
+            </span>
+          )}
+        </div>
         <div className="basis-full text-default-400 text-xs">
           ℹ {captions.esv.description}
         </div>
@@ -49,7 +56,14 @@ export default function Inputs() {
             </div>
           }
         />
-        <div className="text-default-600 text-sm">{state.taxEPValue} ₴</div>
+        <div className="text-default-600 text-sm inline-flex flex-col gap-2 text-right">
+          <span>{state.taxEPValue} ₴</span>
+          {currency.name !== '' && (
+            <span className="text-default-400 text-xs">
+              {currency.taxEp} {currency.sign}
+            </span>
+          )}
+        </div>
         <div className="basis-full text-default-400 text-xs">
           ℹ {captions.ep.description}
         </div>

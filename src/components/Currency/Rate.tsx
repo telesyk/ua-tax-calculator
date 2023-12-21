@@ -1,5 +1,7 @@
 import { CurrenciesListProps } from '@/types'
 import { RadioGroup, Radio, cn } from '@nextui-org/react'
+import { useContext } from 'react'
+import CalculatorContext from '../Calculator/context'
 
 export const CustomRadio = (props: any) => {
   const { children, ...otherProps } = props
@@ -21,10 +23,11 @@ export const CustomRadio = (props: any) => {
 }
 
 export default function CurrencyRate({ data }: CurrenciesListProps[] | any) {
+  const { handleCurrencyChange } = useContext(CalculatorContext)
   return (
     <>
       <div className="text-default-500 mb-3">NBU currency rates to UAH 🇺🇦</div>
-      <RadioGroup>
+      <RadioGroup onValueChange={handleCurrencyChange}>
         {data.map((item: any) => (
           <CustomRadio key={item.cc} value={item.cc}>
             <span className="px-2 text-xs sm:text-sm">

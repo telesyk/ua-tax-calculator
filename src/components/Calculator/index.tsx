@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { CalculatorStateProps } from '@/types'
+import { CalculatorCurrencyProps, CalculatorStateProps } from '@/types'
 import { MOCK_DATA, CURRENT_YEAR, INITIAL_VALUE } from '@/constants'
 import { getEsvValue } from '@/utils'
 import CalculatorContext from './context'
@@ -57,6 +57,15 @@ export default function Calculator() {
         CURRENT_YEAR as keyof typeof INITIAL_VALUE.minsalary
       ].q1,
   })
+  const [currency, setCurrency] = useState<CalculatorCurrencyProps>({
+    value: 0,
+    name: '',
+    sign: '',
+    taxEsv: 0,
+    taxEp: 0,
+    totalTax: 0,
+    profit: 0,
+  })
 
   useEffect(() => {
     setState(prev => ({
@@ -71,6 +80,13 @@ export default function Calculator() {
 
   useEffect(() => {
     handleTaxTotal()
+    setCurrency(prev => ({
+      ...prev,
+      taxEp: Number((state.taxEPValue / prev.value).toFixed(2)),
+      taxEsv: Number((state.taxESVValue / prev.value).toFixed(2)),
+      totalTax: Number((state.taxTotal / prev.value).toFixed(2)),
+      profit: Number((state.profit / prev.value).toFixed(2)),
+    }))
   }, [state.capital, state.epTax, state.taxESVValue])
 
   const handleProfit = () => {
@@ -118,13 +134,30 @@ export default function Calculator() {
     }))
   }
 
+  const handleCurrencyChange = (name: string) => {
+    const currentCurr = MOCK_DATA.find((item: any) => item.cc === name)
+    const rate = Number(currentCurr?.rate)
+
+    setCurrency({
+      name: name,
+      sign: currentCurr?.sign || name,
+      value: rate,
+      taxEp: Number((state.taxEPValue / rate).toFixed(2)),
+      taxEsv: Number((state.taxESVValue / rate).toFixed(2)),
+      totalTax: Number((state.taxTotal / rate).toFixed(2)),
+      profit: Number((state.profit / rate).toFixed(2)),
+    })
+  }
+
   const contextValue = {
     state,
+    currency,
     captions,
     INITIAL_VALUE,
     handleCapitalChange,
     handleTaxChange,
     handleTaxYearChange,
+    handleCurrencyChange,
   }
 
   return (
@@ -134,7 +167,7 @@ export default function Calculator() {
       </div>
       <div className="my-4">
         <p className="my-2 text-xs line-through">Need to add currency choose</p>
-        <p className="my-2 text-xs">Add currency value to taxes</p>
+        <p className="my-2 text-xs line-through">Add currency value to taxes</p>
         <p className="my-2 text-xs">Add currency value to profit after tax</p>
         <p className="my-2 text-xs">Get actual currency rank by API</p>
       </div>

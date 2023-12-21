@@ -28,3 +28,13 @@ export interface CalculatorStateProps {
   taxYear: string
   minsalary: number
 }
+
+export interface CalculatorCurrencyProps {
+  name: string
+  sign?: string
+  value: number
+  taxEsv: number
+  taxEp: number
+  totalTax: number
+  profit: number
+}
