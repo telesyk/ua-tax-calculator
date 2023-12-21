@@ -13,6 +13,11 @@ export const DATA_TYPES: SelectedCurrencyProps[] = [
     sign: '€',
     flag: '🇪🇺',
   },
+  {
+    name: 'PLN',
+    sign: 'zł',
+    flag: '🇵🇱',
+  },
 ]
 
 export const CURRENT_DATE = new Date()
@@ -50,5 +55,14 @@ export const MOCK_DATA = [
     sign: '€',
     exchangedate: '18.12.2023',
     flag: '🇪🇺',
+  },
+  {
+    r030: 985,
+    txt: 'Злотий',
+    rate: 9.3936,
+    cc: 'PLN',
+    sign: 'zł',
+    exchangedate: '18.12.2023',
+    flag: '🇵🇱',
   },
 ]

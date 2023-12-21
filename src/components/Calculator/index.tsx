@@ -17,11 +17,11 @@ const captions = {
   },
   esv: {
     label: 'Tax ESV (ЄСВ)',
-    description: '',
+    description: 'Takes from minimal salary',
   },
   ep: {
     label: 'Tax EP (ЄП)',
-    description: '',
+    description: 'Takes from your monthly, quarterly, or yearly incomes',
   },
   capital: {
     label: 'Capital gains',
@@ -131,6 +131,12 @@ export default function Calculator() {
     <CalculatorContext.Provider value={contextValue}>
       <div className="my-4">
         <TaxYears />
+      </div>
+      <div className="my-4">
+        <p className="my-2 text-xs line-through">Need to add currency choose</p>
+        <p className="my-2 text-xs">Add currency value to taxes</p>
+        <p className="my-2 text-xs">Add currency value to profit after tax</p>
+        <p className="my-2 text-xs">Get actual currency rank by API</p>
       </div>
       <div className="my-6 flex justify-center gap-8 xl:gap-12">
         <div className="py-2 grow md:basis-1/2">

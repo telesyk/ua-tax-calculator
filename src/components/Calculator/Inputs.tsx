@@ -8,7 +8,7 @@ export default function Inputs() {
 
   return (
     <>
-      <div className="py-2 flex gap-2 items-end justify-between">
+      <div className="py-2 flex flex-wrap gap-2 items-start justify-between">
         <Input
           isReadOnly
           type="number"
@@ -17,19 +17,21 @@ export default function Inputs() {
           labelPlacement="outside"
           label={captions.esv.label}
           defaultValue={`${INITIAL_VALUE.taxesv}`}
-          description={captions.esv.description}
           endContent={
             <div className="pointer-events-none flex items-center">
               <span
-                className="text-default-400 text-small"
+                className="text-default-400 text-sm"
                 dangerouslySetInnerHTML={{ __html: captions.sign.percent }}
               ></span>
             </div>
           }
         />
-        <span className="text-default-500">{state.taxESVValue} ₴</span>
+        <div className="text-default-600 text-sm">{state.taxESVValue} ₴</div>
+        <div className="basis-full text-default-400 text-xs">
+          ℹ {captions.esv.description}
+        </div>
       </div>
-      <div className="py-2 flex gap-2 items-end justify-between">
+      <div className="py-2 flex flex-wrap gap-2 items-start justify-between">
         <Input
           isReadOnly
           type="number"
@@ -41,13 +43,16 @@ export default function Inputs() {
           endContent={
             <div className="pointer-events-none flex items-center">
               <span
-                className="text-default-400 text-small"
+                className="text-default-400 text-sm"
                 dangerouslySetInnerHTML={{ __html: captions.sign.percent }}
               ></span>
             </div>
           }
         />
-        <span className="text-default-500">{state.taxEPValue} ₴</span>
+        <div className="text-default-600 text-sm">{state.taxEPValue} ₴</div>
+        <div className="basis-full text-default-400 text-xs">
+          ℹ {captions.ep.description}
+        </div>
       </div>
       <div className="py-2">
         <Input
