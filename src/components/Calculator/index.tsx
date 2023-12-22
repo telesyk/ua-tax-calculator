@@ -80,14 +80,11 @@ export default function Calculator() {
 
   useEffect(() => {
     handleTaxTotal()
-    setCurrency(prev => ({
-      ...prev,
-      taxEp: Number((state.taxEPValue / prev.value).toFixed(2)),
-      taxEsv: Number((state.taxESVValue / prev.value).toFixed(2)),
-      totalTax: Number((state.taxTotal / prev.value).toFixed(2)),
-      profit: Number((state.profit / prev.value).toFixed(2)),
-    }))
   }, [state.capital, state.epTax, state.taxESVValue])
+
+  useEffect(() => {
+    handleCurrencyUpdate()
+  }, [state.profit, state.taxTotal, state.epTax, state.taxESVValue])
 
   const handleProfit = () => {
     setState(prev => ({
@@ -131,6 +128,16 @@ export default function Calculator() {
       minsalary:
         INITIAL_VALUE.minsalary[value as keyof typeof INITIAL_VALUE.minsalary]
           .q1,
+    }))
+  }
+
+  const handleCurrencyUpdate = () => {
+    setCurrency(prev => ({
+      ...prev,
+      taxEp: Number((state.taxEPValue / prev.value).toFixed(2)),
+      taxEsv: Number((state.taxESVValue / prev.value).toFixed(2)),
+      totalTax: Number((state.taxTotal / prev.value).toFixed(2)),
+      profit: Number((state.profit / prev.value).toFixed(2)),
     }))
   }
 
