@@ -4,10 +4,8 @@ import { CalculatorCurrencyProps, CalculatorStateProps } from '@/types'
 import { MOCK_DATA, CURRENT_YEAR, INITIAL_VALUE } from '@/constants'
 import { getEsvValue } from '@/utils'
 import CalculatorContext from './context'
-import CurrencyRate from '../Currency/Rate'
 import Inputs from './Inputs'
 import Outputs from './Outputs'
-import TaxCategories from './TaxCategories'
 import TaxYears from './TaxYears'
 
 const captions = {
@@ -26,6 +24,10 @@ const captions = {
   capital: {
     label: 'Capital gains',
     description: '',
+  },
+  rates: {
+    label: 'NBU currency rates to UAH 🇺🇦 today',
+    description: 'ℹ Only rates provided by National Bank of Ukraine',
   },
   taxTotal: {
     title: 'Total tax to pay',
@@ -175,22 +177,16 @@ export default function Calculator() {
       <div className="my-4">
         <p className="my-2 text-xs line-through">Need to add currency choose</p>
         <p className="my-2 text-xs line-through">Add currency value to taxes</p>
-        <p className="my-2 text-xs">Add currency value to profit after tax</p>
+        <p className="my-2 text-xs line-through">
+          Add currency value to profit after tax
+        </p>
         <p className="my-2 text-xs">Get actual currency rank by API</p>
       </div>
-      <div className="my-6 flex justify-center gap-8 xl:gap-12">
-        <div className="py-2 grow md:basis-1/2">
-          <TaxCategories />
-        </div>
-        <div className="py-2 grow md:basis-1/2">
-          <CurrencyRate data={MOCK_DATA} />
-        </div>
-      </div>
-      <div className="flex flex-wrap sm:flex-nowrap justify-center items-end gap-8 xl:gap-12">
-        <div className="py-2 grow basis-full sm:basis-1/2">
+      <div className="my-6 flex flex-wrap sm:flex-nowrap justify-center items-end gap-8 xl:gap-12">
+        <div className="grow basis-full sm:basis-1/2">
           <Inputs />
         </div>
-        <div className="py-2 grow basis-full sm:basis-1/2">
+        <div className="grow basis-full sm:basis-1/2">
           <Outputs />
         </div>
       </div>

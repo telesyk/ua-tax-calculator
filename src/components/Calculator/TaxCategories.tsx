@@ -6,14 +6,17 @@ export default function TaxCategories() {
   const { state, captions, handleTaxChange } = useContext(CalculatorContext)
 
   return (
-    <RadioGroup
-      label="Select tax category"
-      color="primary"
-      value={`${state.epTax}`}
-      onValueChange={handleTaxChange}
-    >
-      <Radio value="5">{captions.taxOptions.option1}</Radio>
-      <Radio value="3">{captions.taxOptions.option2}</Radio>
-    </RadioGroup>
+    <>
+      <RadioGroup
+        color="primary"
+        size="sm"
+        orientation="horizontal"
+        value={`${state.epTax}`}
+        onValueChange={handleTaxChange}
+      >
+        <Radio value="5">{captions.taxOptions.option1}</Radio>
+        <Radio value="3">{captions.taxOptions.option2}</Radio>
+      </RadioGroup>
+    </>
   )
 }

@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Input } from '@nextui-org/react'
 import CalculatorContext from './context'
+import TaxCategories from './TaxCategories'
 
 export default function Inputs() {
   const { state, currency, captions, INITIAL_VALUE, handleCapitalChange } =
@@ -8,7 +9,7 @@ export default function Inputs() {
 
   return (
     <>
-      <div className="py-2 flex flex-wrap gap-2 items-start justify-between">
+      <div className="py-4 flex flex-wrap gap-2 items-start justify-between">
         <Input
           isReadOnly
           type="number"
@@ -38,24 +39,11 @@ export default function Inputs() {
           ℹ {captions.esv.description}
         </div>
       </div>
-      <div className="py-2 flex flex-wrap gap-2 items-start justify-between">
-        <Input
-          isReadOnly
-          type="number"
-          variant="flat"
-          className="basis-1/2"
-          labelPlacement="outside"
-          label={captions.ep.label}
-          value={`${state.epTax}`}
-          endContent={
-            <div className="pointer-events-none flex items-center">
-              <span
-                className="text-default-400 text-sm"
-                dangerouslySetInnerHTML={{ __html: captions.sign.percent }}
-              ></span>
-            </div>
-          }
-        />
+      <div className="py-4 flex flex-wrap gap-2 items-start justify-between">
+        <div className="basis-1/2">
+          <p className="mb-2 text-foreground text-sm">{captions.ep.label}</p>
+          <TaxCategories />
+        </div>
         <div className="text-default-600 text-sm inline-flex flex-col gap-2 text-right">
           <span>{state.taxEPValue} ₴</span>
           {currency.name !== '' && (
@@ -68,7 +56,7 @@ export default function Inputs() {
           ℹ {captions.ep.description}
         </div>
       </div>
-      <div className="py-2">
+      <div className="py-4">
         <Input
           type="number"
           variant="bordered"

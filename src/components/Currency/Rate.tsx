@@ -23,10 +23,17 @@ export const CustomRadio = (props: any) => {
 }
 
 export default function CurrencyRate({ data }: CurrenciesListProps[] | any) {
-  const { handleCurrencyChange } = useContext(CalculatorContext)
+  const { captions, handleCurrencyChange } = useContext(CalculatorContext)
   return (
     <>
-      <div className="text-default-500 mb-3">NBU currency rates to UAH 🇺🇦</div>
+      <div className="mb-3">
+        <p className="text-foreground-500 text-sm mb-1">
+          {captions.rates.label}
+        </p>
+        <p className="text-foreground-400 text-xs">
+          {captions.rates.description}
+        </p>
+      </div>
       <RadioGroup onValueChange={handleCurrencyChange}>
         {data.map((item: any) => (
           <CustomRadio key={item.cc} value={item.cc}>
