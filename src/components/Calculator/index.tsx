@@ -8,43 +8,6 @@ import Inputs from './Inputs'
 import Outputs from './Outputs'
 import TaxYears from './TaxYears'
 
-const CAPTIONS = {
-  taxOptions: {
-    option1: '5 %',
-    option2: '3 % + ПДВ',
-  },
-  esv: {
-    label: 'Tax ESV (ЄСВ)',
-    description: 'Takes from minimal salary',
-  },
-  ep: {
-    label: 'Tax EP (ЄП)',
-    description: 'Takes from your monthly, quarterly, or yearly incomes',
-  },
-  capital: {
-    label: 'Capital gains',
-    description: '',
-  },
-  rates: {
-    label: 'NBU currency rates to UAH 🇺🇦 today',
-    description: 'ℹ Only rates provided by National Bank of Ukraine',
-  },
-  taxTotal: {
-    title: 'Total tax to pay',
-    description: '',
-  },
-  profit: {
-    title: 'Profit after tax',
-    description: '',
-  },
-  sign: {
-    uah: '&#8372;',
-    usd: '&dollar;',
-    eur: '&euro;',
-    percent: '&percnt;',
-  },
-}
-
 export default function Calculator() {
   const [state, setState] = useState<CalculatorStateProps>({
     epTax: INITIAL_VALUE.taxep,
@@ -161,7 +124,6 @@ export default function Calculator() {
   const contextValue = {
     state,
     currency,
-    CAPTIONS,
     INITIAL_VALUE,
     handleCapitalChange,
     handleTaxChange,
@@ -175,6 +137,7 @@ export default function Calculator() {
         <TaxYears />
       </div>
       <div className="my-4">
+        <p className="my-2 text-xs">ColorTheme switcher</p>
         <p className="my-2 text-xs">Get actual currency rank by API</p>
         <p className="my-2 text-xs line-through">Update Radio for taxes</p>
         <p className="my-2 text-xs">

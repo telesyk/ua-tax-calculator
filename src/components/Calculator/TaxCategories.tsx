@@ -1,10 +1,11 @@
 import { useContext } from 'react'
 import CalculatorContext from './context'
+import { CAPTIONS } from '@/constants'
 import { RadioGroup } from '@nextui-org/react'
 import { CustomRadio } from '../UI/CustomRadio'
 
 export default function TaxCategories() {
-  const { state, CAPTIONS, handleTaxChange } = useContext(CalculatorContext)
+  const { state, handleTaxChange } = useContext(CalculatorContext)
 
   return (
     <>

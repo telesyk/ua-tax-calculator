@@ -2,9 +2,10 @@ import { useContext } from 'react'
 import { Input } from '@nextui-org/react'
 import CalculatorContext from './context'
 import TaxCategories from './TaxCategories'
+import { CAPTIONS } from '@/constants'
 
 export default function Inputs() {
-  const { state, currency, CAPTIONS, INITIAL_VALUE, handleCapitalChange } =
+  const { state, currency, INITIAL_VALUE, handleCapitalChange } =
     useContext(CalculatorContext)
 
   return (

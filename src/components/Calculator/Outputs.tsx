@@ -2,9 +2,10 @@ import { useContext } from 'react'
 import { MOCK_DATA } from '@/constants'
 import CalculatorContext from './context'
 import CurrencyRate from '../Currency/Rate'
+import { CAPTIONS } from '@/constants'
 
 export default function Outputs() {
-  const { CAPTIONS, state, currency } = useContext(CalculatorContext)
+  const { state, currency } = useContext(CalculatorContext)
   return (
     <>
       <div className="py-4 flex justify-between">

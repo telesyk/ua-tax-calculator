@@ -3,9 +3,10 @@ import { CurrenciesListProps } from '@/types'
 import { RadioGroup } from '@nextui-org/react'
 import CalculatorContext from '../Calculator/context'
 import { CustomRadio } from '../UI/CustomRadio'
+import { CAPTIONS } from '@/constants'
 
 export default function CurrencyRate({ data }: CurrenciesListProps[] | any) {
-  const { CAPTIONS, handleCurrencyChange } = useContext(CalculatorContext)
+  const { handleCurrencyChange } = useContext(CalculatorContext)
   return (
     <>
       <div className="mb-3">
