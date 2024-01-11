@@ -8,7 +8,7 @@ import Inputs from './Inputs'
 import Outputs from './Outputs'
 import TaxYears from './TaxYears'
 
-const captions = {
+const CAPTIONS = {
   taxOptions: {
     option1: '5 %',
     option2: '3 % + ПДВ',
@@ -161,7 +161,7 @@ export default function Calculator() {
   const contextValue = {
     state,
     currency,
-    captions,
+    CAPTIONS,
     INITIAL_VALUE,
     handleCapitalChange,
     handleTaxChange,
@@ -175,14 +175,13 @@ export default function Calculator() {
         <TaxYears />
       </div>
       <div className="my-4">
-        <p className="my-2 text-xs line-through">Need to add currency choose</p>
-        <p className="my-2 text-xs line-through">Add currency value to taxes</p>
-        <p className="my-2 text-xs line-through">
-          Add currency value to profit after tax
-        </p>
         <p className="my-2 text-xs">Get actual currency rank by API</p>
+        <p className="my-2 text-xs line-through">Update Radio for taxes</p>
+        <p className="my-2 text-xs">
+          Add Loading components to Inputs & Outputs
+        </p>
       </div>
-      <div className="my-6 flex flex-wrap sm:flex-nowrap justify-center items-end gap-8 xl:gap-12">
+      <div className="my-6 flex flex-wrap sm:flex-nowrap justify-center items-start gap-8 xl:gap-12">
         <div className="grow basis-full sm:basis-1/2">
           <Inputs />
         </div>

@@ -1,21 +1,24 @@
 import { useContext } from 'react'
 import CalculatorContext from './context'
-import { RadioGroup, Radio } from '@nextui-org/react'
+import { RadioGroup } from '@nextui-org/react'
+import { CustomRadio } from '../UI/CustomRadio'
 
 export default function TaxCategories() {
-  const { state, captions, handleTaxChange } = useContext(CalculatorContext)
+  const { state, CAPTIONS, handleTaxChange } = useContext(CalculatorContext)
 
   return (
     <>
       <RadioGroup
-        color="primary"
-        size="sm"
         orientation="horizontal"
         value={`${state.epTax}`}
         onValueChange={handleTaxChange}
       >
-        <Radio value="5">{captions.taxOptions.option1}</Radio>
-        <Radio value="3">{captions.taxOptions.option2}</Radio>
+        <CustomRadio color="secondary" size="sm" value="5">
+          {CAPTIONS.taxOptions.option1}
+        </CustomRadio>
+        <CustomRadio color="secondary" size="sm" value="3">
+          {CAPTIONS.taxOptions.option2}
+        </CustomRadio>
       </RadioGroup>
     </>
   )
