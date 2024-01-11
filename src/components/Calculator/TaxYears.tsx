@@ -13,7 +13,6 @@ export default function TaxYears() {
     <>
       <RadioGroup
         description="Select tax year"
-        color="secondary"
         orientation="horizontal"
         defaultValue={state.taxYear}
         onValueChange={handleTaxYearChange}

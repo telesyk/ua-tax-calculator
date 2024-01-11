@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="light">
       <body className="bg-gradient-to-t from-yellow-300/50 to-cyan-300/50 dark:from-amber-950/40 dark:to-sky-950/40">
         <Providers>
           <div className="min-h-screen flex flex-col items-center justify-between">

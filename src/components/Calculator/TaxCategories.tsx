@@ -13,10 +13,10 @@ export default function TaxCategories() {
         value={`${state.epTax}`}
         onValueChange={handleTaxChange}
       >
-        <CustomRadio color="secondary" size="sm" value="5">
+        <CustomRadio size="sm" value="5">
           {CAPTIONS.taxOptions.option1}
         </CustomRadio>
-        <CustomRadio color="secondary" size="sm" value="3">
+        <CustomRadio size="sm" value="3">
           {CAPTIONS.taxOptions.option2}
         </CustomRadio>
       </RadioGroup>

@@ -19,7 +19,6 @@ export default function CurrencyRate({ data }: CurrenciesListProps[] | any) {
       <RadioGroup
         onValueChange={handleCurrencyChange}
         size="sm"
-        color="secondary"
         orientation="horizontal"
       >
         {data.map((item: any) => (
