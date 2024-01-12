@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Providers } from './providers'
 import './globals.css'
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'UA Tax calculator',
@@ -14,10 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="light">
+    <html lang="en">
       <body className="bg-gradient-to-t from-yellow-300/50 to-cyan-300/50 dark:from-amber-950/40 dark:to-sky-950/40">
         <Providers>
           <div className="min-h-screen flex flex-col items-center justify-between">
+            <Header />
             <main className="max-w-5xl w-full grow p-4 sm:p-10">
               {/* <nav className='flex justify-end'></nav> */}
               <section className="p-4 sm:p-10 lg:p-16 rounded-lg backdrop-blur-lg bg-slate-100/60 dark:bg-slate-900/60">

@@ -134,15 +134,15 @@ export default function Calculator() {
   return (
     <CalculatorContext.Provider value={contextValue}>
       <div className="my-4">
-        <TaxYears />
-      </div>
-      <div className="my-4">
-        <p className="my-2 text-xs">ColorTheme switcher</p>
+        <p className="my-2 text-xs line-through">ColorTheme switcher</p>
         <p className="my-2 text-xs">Get actual currency rank by API</p>
         <p className="my-2 text-xs line-through">Update Radio for taxes</p>
         <p className="my-2 text-xs">
           Add Loading components to Inputs & Outputs
         </p>
+      </div>
+      <div className="my-4">
+        <TaxYears />
       </div>
       <div className="my-6 flex flex-wrap sm:flex-nowrap justify-center items-start gap-8 xl:gap-12">
         <div className="grow basis-full sm:basis-1/2">

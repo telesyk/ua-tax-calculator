@@ -17,13 +17,9 @@ export default function CurrencyRate({ data }: CurrenciesListProps[] | any) {
           {CAPTIONS.rates.description}
         </p>
       </div>
-      <RadioGroup
-        onValueChange={handleCurrencyChange}
-        size="sm"
-        orientation="horizontal"
-      >
+      <RadioGroup onValueChange={handleCurrencyChange} orientation="horizontal">
         {data.map((item: any) => (
-          <CustomRadio key={item.cc} value={item.cc}>
+          <CustomRadio size="sm" key={item.cc} value={item.cc}>
             <span className="px-2 text-xs sm:text-sm">
               {item.flag} {item.sign || item.cc}
             </span>
