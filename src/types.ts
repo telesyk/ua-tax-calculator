@@ -14,10 +14,6 @@ export interface CurrencyProps {
   flag?: string
 }
 
-export type CurrenciesListProps = {
-  data: CurrencyProps[] | []
-}
-
 export interface CalculatorStateProps {
   epTax: number
   capital: number
@@ -27,6 +23,7 @@ export interface CalculatorStateProps {
   taxEPValue: number
   taxYear: string
   minsalary: number
+  currencies: object[]
 }
 
 export interface CalculatorCurrencyProps {

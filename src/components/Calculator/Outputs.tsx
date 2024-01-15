@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { MOCK_DATA } from '@/constants'
 import CalculatorContext from './context'
 import CurrencyRate from '../Currency/Rate'
 import { CAPTIONS } from '@/constants'
@@ -43,7 +42,7 @@ export default function Outputs() {
         </div>
       </div>
       <div className="py-4">
-        <CurrencyRate data={MOCK_DATA} />
+        <CurrencyRate />
       </div>
     </>
   )

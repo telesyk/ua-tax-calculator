@@ -1,8 +1,9 @@
 import { useContext } from 'react'
 import { Input } from '@nextui-org/react'
+import { CAPTIONS } from '@/constants'
 import CalculatorContext from './context'
 import TaxCategories from './TaxCategories'
-import { CAPTIONS } from '@/constants'
+import { FaInfoCircle } from 'react-icons/fa'
 
 export default function Inputs() {
   const { state, currency, INITIAL_VALUE, handleCapitalChange } =
@@ -43,7 +44,7 @@ export default function Inputs() {
           )}
         </div>
         <div className="basis-full text-default-400 text-xs">
-          ℹ {CAPTIONS.ep.description}
+          <FaInfoCircle className="inline" /> {CAPTIONS.ep.description}
         </div>
       </div>
       <div className="py-4 flex flex-wrap gap-2 items-start justify-between">
@@ -73,7 +74,7 @@ export default function Inputs() {
           )}
         </div>
         <div className="basis-full text-default-400 text-xs">
-          ℹ {CAPTIONS.esv.description}
+          <FaInfoCircle className="inline" /> {CAPTIONS.esv.description}
         </div>
       </div>
     </>

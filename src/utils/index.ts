@@ -1,8 +1,8 @@
-import { DATA_TYPES, INITIAL_VALUE } from '@/constants'
+import { CURRENCIES, INITIAL_VALUE } from '@/constants'
 
-export const filteredData = (data: object | any) => {
+export const filteredData = (data: object[] | any) => {
   const newArr: object[] = []
-  DATA_TYPES.forEach((item: any) => {
+  CURRENCIES.forEach((item: any) => {
     data.filter((i: object | any) => {
       if (item.name === i?.cc)
         newArr.push({ ...i, sign: item.sign, flag: item.flag })

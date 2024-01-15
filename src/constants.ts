@@ -1,8 +1,8 @@
 import { SelectedCurrencyProps } from '@/types'
 
-export const api =
+export const API =
   'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
-export const DATA_TYPES: SelectedCurrencyProps[] = [
+export const CURRENCIES: SelectedCurrencyProps[] = [
   {
     name: 'USD',
     sign: '$',
@@ -45,8 +45,9 @@ export const CAPTIONS = {
     description: '',
   },
   rates: {
-    label: 'NBU currency rates to UAH 🇺🇦 today',
-    description: 'ℹ Only rates provided by National Bank of Ukraine',
+    title: 'Select currency',
+    label: 'NBU currency rates to UAH 🇺🇦 for',
+    description: 'Rates provided by National Bank of Ukraine',
   },
   taxTotal: {
     title: 'Total tax to pay',

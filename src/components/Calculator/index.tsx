@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { CalculatorCurrencyProps, CalculatorStateProps } from '@/types'
-import { MOCK_DATA, CURRENT_YEAR, INITIAL_VALUE } from '@/constants'
-import { getEsvValue } from '@/utils'
+import { MOCK_DATA, CURRENT_YEAR, INITIAL_VALUE, API } from '@/constants'
+import { filteredData, getCurrencies, getEsvValue } from '@/utils'
 import CalculatorContext from './context'
 import Inputs from './Inputs'
 import Outputs from './Outputs'
@@ -10,6 +10,7 @@ import TaxYears from './TaxYears'
 
 export default function Calculator() {
   const [state, setState] = useState<CalculatorStateProps>({
+    currencies: [],
     epTax: INITIAL_VALUE.taxep,
     capital: 0.0,
     profit: 0.0,
@@ -33,10 +34,20 @@ export default function Calculator() {
   })
 
   useEffect(() => {
-    setState(prev => ({
-      ...prev,
-      capital: prev.minsalary,
-    }))
+    const fetchData = async () => {
+      try {
+        const data = await getCurrencies(API)
+        setState(prev => ({
+          ...prev,
+          currencies: filteredData(data),
+          capital: prev.minsalary,
+        }))
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchData()
   }, [])
 
   useEffect(() => {
