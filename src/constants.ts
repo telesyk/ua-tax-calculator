@@ -30,7 +30,7 @@ export const CAPTIONS = {
   },
   taxOptions: {
     option1: '5 %',
-    option2: '3 % + ПДВ',
+    option2: '3 % + VAT (ПДВ)',
   },
   esv: {
     label: 'Tax ESV (ЄСВ)',
@@ -78,33 +78,3 @@ export const INITIAL_VALUE = {
   taxep: 5,
   taxesv: 22,
 }
-
-export const MOCK_DATA = [
-  {
-    r030: 840,
-    txt: 'Долар США',
-    rate: 37.0211,
-    cc: 'USD',
-    sign: '$',
-    exchangedate: '18.12.2023',
-    flag: '🇺🇸',
-  },
-  {
-    r030: 978,
-    txt: 'Євро',
-    rate: 40.5122,
-    cc: 'EUR',
-    sign: '€',
-    exchangedate: '18.12.2023',
-    flag: '🇪🇺',
-  },
-  {
-    r030: 985,
-    txt: 'Злотий',
-    rate: 9.3936,
-    cc: 'PLN',
-    sign: 'zł',
-    exchangedate: '18.12.2023',
-    flag: '🇵🇱',
-  },
-]

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { CalculatorCurrencyProps, CalculatorStateProps } from '@/types'
-import { MOCK_DATA, CURRENT_YEAR, INITIAL_VALUE, API } from '@/constants'
+import { CURRENCIES, CURRENT_YEAR, INITIAL_VALUE, API } from '@/constants'
 import { filteredData, getCurrencies, getEsvValue } from '@/utils'
 import CalculatorContext from './context'
 import Inputs from './Inputs'
@@ -118,8 +118,8 @@ export default function Calculator() {
   }
 
   const handleCurrencyChange = (name: string) => {
-    const currentCurr = MOCK_DATA.find((item: any) => item.cc === name)
-    const rate = Number(currentCurr?.rate)
+    const currentCurr = CURRENCIES.find((item: any) => item.name === name)
+    const rate = Number(currency?.value)
 
     setCurrency({
       name: name,
@@ -145,9 +145,6 @@ export default function Calculator() {
   return (
     <CalculatorContext.Provider value={contextValue}>
       <div className="my-4">
-        <p className="my-2 text-xs line-through">ColorTheme switcher</p>
-        <p className="my-2 text-xs">Get actual currency rank by API</p>
-        <p className="my-2 text-xs line-through">Update Radio for taxes</p>
         <p className="my-2 text-xs">
           Add Loading components to Inputs & Outputs
         </p>
