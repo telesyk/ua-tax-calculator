@@ -21,7 +21,6 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col items-center justify-between">
             <Header />
             <main className="max-w-5xl w-full grow p-4 sm:p-10">
-              {/* <nav className='flex justify-end'></nav> */}
               <section className="p-4 sm:p-10 lg:p-16 rounded-lg backdrop-blur-lg bg-slate-100/60 dark:bg-slate-900/60">
                 {children}
               </section>

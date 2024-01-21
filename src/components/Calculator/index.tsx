@@ -145,11 +145,6 @@ export default function Calculator() {
   return (
     <CalculatorContext.Provider value={contextValue}>
       <div className="my-4">
-        <p className="my-2 text-xs">
-          Add Loading components to Inputs & Outputs
-        </p>
-      </div>
-      <div className="my-4">
         <TaxYears />
       </div>
       <div className="my-6 flex flex-wrap sm:flex-nowrap justify-center items-start gap-8 xl:gap-12">

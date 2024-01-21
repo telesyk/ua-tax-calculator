@@ -1,5 +1,7 @@
 import Calculator from '@/components/Calculator'
+import Preloader from '@/components/UI/Preloader'
 import { CAPTIONS } from '@/constants'
+import { Suspense } from 'react'
 
 export default async function Home() {
   return (
@@ -8,7 +10,10 @@ export default async function Home() {
         className="text-2xl text-center mb-6"
         dangerouslySetInnerHTML={{ __html: CAPTIONS.home.title }}
       ></h1>
-      <Calculator />
+
+      <Suspense fallback={<Preloader />}>
+        <Calculator />
+      </Suspense>
     </>
   )
 }
